@@ -15,29 +15,18 @@ namespace NumberAnalyzer
             {
                 Console.WriteLine($"\nAlright, {user}. Enter a number between 1 and 100: ");
 
-                int userInput = Convert.ToInt32(Console.ReadLine().Trim());
+                int userInput = int.Parse(Console.ReadLine().Trim());
+                bool IsEven = Even(userInput);
 
                 if (userInput <= 0)
                 {
                     Console.WriteLine("Number cannot be negative or 0");
                 }                    
-                else if (userInput <= 25 && userInput % 2 == 0)
+                else if (userInput <= 25 && IsEven)
                 {
                     Console.WriteLine($"{userInput}, Even and less than 25");
                 }
-                else if (userInput <= 25)
-                {
-                    Console.WriteLine($"{userInput}, Odd");
-                }
-                else if (userInput <= 60 && userInput % 2 == 0)
-                {
-                    Console.WriteLine($"{userInput}, Even");
-                }
-                else if (userInput <= 60)
-                {
-                    Console.WriteLine($"{userInput}, Odd");
-                }
-                else if (userInput <= 100 && userInput % 2 == 0)
+                else if (userInput <= 100 && Even(userInput))
                 {
                     Console.WriteLine($"{userInput}, Even");
                 }
@@ -72,6 +61,17 @@ namespace NumberAnalyzer
                 }
             }
             Console.WriteLine($"\nBye, {user}!");
+        }
+        public static bool Even(int num)
+        {
+            if (num % 2 == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
